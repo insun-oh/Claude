@@ -124,9 +124,9 @@ freq = dict(zip(df["term"], df["weight"]))
 # (B) 원형 마스크
 # -----------------------------
 def make_circle_mask(size=1600, margin=40):
-    img = Image.new("L", (size, size), 0)
+    img = Image.new("L", (size, size), 255)   # 255=흰색=배치 금지
     draw = ImageDraw.Draw(img)
-    draw.ellipse((margin, margin, size - margin, size - margin), fill=255)
+    draw.ellipse((margin, margin, size - margin, size - margin), fill=0)  # 0=검정=배치 허용
     return np.array(img)
 
 mask = make_circle_mask(size=1600, margin=40)

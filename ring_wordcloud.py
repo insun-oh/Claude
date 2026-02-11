@@ -2,8 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
-from PIL import Image, ImageDraw
-from matplotlib.colors import LinearSegmentedColormap
+from PIL import Image, ImageDraw, ImageFont
 from pathlib import Path
 
 # -----------------------------
@@ -118,21 +117,32 @@ for term, level, importance in keywords:
     records.append((term, level, importance, round(w, 1)))
 
 df = pd.DataFrame(records, columns=["term", "level", "importance", "weight"])
-freq = dict(zip(df["term"], df["weight"]))
+
+# SKKU PEPV는 중앙에 별도 배치 → 워드클라우드 freq에서 제외
+freq = {row["term"]: row["weight"]
+        for _, row in df.iterrows() if row["term"] != "SKKU PEPV"}
 
 # -----------------------------
-# (B) 원형 마스크
+# (B) 도넛형 마스크 (중앙 비우기 → SKKU PEPV 자리)
 # -----------------------------
-def make_circle_mask(size=1600, margin=40):
-    img = Image.new("L", (size, size), 255)   # 255=흰색=배치 금지
+SIZE = 1600
+MARGIN = 40
+CENTER_R = 180  # 중앙 빈 공간 반지름 (SKKU PEPV 텍스트 자리)
+
+def make_donut_mask(size, margin, center_r):
+    img = Image.new("L", (size, size), 255)  # 흰색=배치 금지
     draw = ImageDraw.Draw(img)
-    draw.ellipse((margin, margin, size - margin, size - margin), fill=0)  # 0=검정=배치 허용
+    # 바깥 원: 배치 허용 (검정)
+    draw.ellipse((margin, margin, size - margin, size - margin), fill=0)
+    # 중앙 원: 배치 금지 (흰색) → SKKU PEPV 자리 확보
+    cx, cy = size // 2, size // 2
+    draw.ellipse((cx - center_r, cy - center_r, cx + center_r, cy + center_r), fill=255)
     return np.array(img)
 
-mask = make_circle_mask(size=1600, margin=40)
+mask = make_donut_mask(SIZE, MARGIN, CENTER_R)
 
 # -----------------------------
-# (C) 이전 버전 색상 팔레트 (파랑-초록-청록 계열)
+# (C) 색상 팔레트 (파랑-초록-청록 계열)
 # -----------------------------
 color_list = [
     "#1B3A5C",  # 진한 남색
@@ -148,25 +158,22 @@ color_list = [
 ]
 
 def custom_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
-    """폰트 크기에 따라 진한색(큰 글씨) ~ 밝은색(작은 글씨) 매핑"""
-    # font_size 범위를 0~1로 정규화 (대략 10~160)
-    t = min(1.0, max(0.0, (font_size - 10) / 140))
-    # 큰 글씨일수록 진한 색 (리스트 앞쪽)
+    t = min(1.0, max(0.0, (font_size - 8) / 130))
     idx = int((1.0 - t) * (len(color_list) - 1))
     return color_list[idx]
 
 # -----------------------------
-# (D) 워드클라우드 생성
+# (D) 워드클라우드 생성 (SKKU PEPV 제외)
 # -----------------------------
 wc = WordCloud(
-    width=1600,
-    height=1600,
+    width=SIZE,
+    height=SIZE,
     background_color=None,
     mode="RGBA",
     mask=mask,
     prefer_horizontal=0.88,
     min_font_size=8,
-    max_font_size=160,
+    max_font_size=140,
     relative_scaling=0.45,
     collocations=False,
     random_state=42,
@@ -177,18 +184,41 @@ wc = WordCloud(
 wc.generate_from_frequencies(freq)
 
 # -----------------------------
-# (E) 저장
+# (E) SKKU PEPV를 중앙에 합성 (PIL)
+# -----------------------------
+wc_img = wc.to_image()  # RGBA
+
+# SKKU PEPV 텍스트를 중앙에 그리기
+draw = ImageDraw.Draw(wc_img)
+
+# 폰트 크기를 자동 조정 (중앙 공간에 맞춤)
+target_text = "SKKU PEPV"
+font_size = 120
+try:
+    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", font_size)
+except OSError:
+    font = ImageFont.load_default()
+
+# 텍스트 크기 측정 후 중앙 배치
+bbox = draw.textbbox((0, 0), target_text, font=font)
+tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
+x = (SIZE - tw) // 2
+y = (SIZE - th) // 2 - 10  # 살짝 위로 보정
+draw.text((x, y), target_text, fill="#1B3A5C", font=font)
+
+# -----------------------------
+# (F) 저장
 # -----------------------------
 out_dir = Path("wordcloud_output")
 out_dir.mkdir(exist_ok=True)
 
 # 투명 배경
 transparent_path = out_dir / "wordcloud_transparent.png"
-wc.to_file(str(transparent_path))
+wc_img.save(str(transparent_path))
 
 # 흰 배경 버전
 fig, ax = plt.subplots(figsize=(10, 10))
-ax.imshow(wc, interpolation="bilinear")
+ax.imshow(wc_img, interpolation="bilinear")
 ax.axis("off")
 plt.tight_layout()
 

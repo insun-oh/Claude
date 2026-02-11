@@ -1,0 +1,26 @@
+﻿term,level,importance,weight
+SKKU PEPV,Core,1.4,336.0
+Pharmacoepidemiology,Core,1.3,312.0
+Drug Safety,Core,1.2,288.0
+Real-World Evidence,Core,1.1,264.0
+Methodology,Primary,1.2,168.0
+Cardiovascular Disease,Primary,1.15,161.0
+Metabolic Disorders,Primary,1.1,154.0
+Diabetes,Primary,1.1,154.0
+Mental Health,Primary,1.05,147.0
+Neuropsychiatry,Primary,1.0,140.0
+SGLT2 inhibitors,Secondary,1.15,92.0
+GLP-1 receptor agonists,Secondary,1.1,88.0
+Marginal structural models,Secondary,1.1,88.0
+Target trial emulation,Secondary,1.1,88.0
+MACE,Secondary,1.05,84.0
+Clone-censor weight,Secondary,1.05,84.0
+Immeasurable time bias,Secondary,1.0,80.0
+DPP-4 inhibitors,Secondary,0.95,76.0
+COVID-19 vaccines,Secondary,0.95,76.0
+Adverse Drug Reactions,Secondary,0.95,76.0
+RWE,Secondary,0.95,76.0
+DOACs,Secondary,0.9,72.0
+Acute Kidney Injury,Secondary,0.9,72.0
+ADHD medications,Secondary,0.85,68.0
+Bleeding,Secondary,0.85,68.0

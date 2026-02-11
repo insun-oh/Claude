@@ -1,26 +1,82 @@
 ﻿term,level,importance,weight
-SKKU PEPV,Core,1.4,336.0
-Pharmacoepidemiology,Core,1.3,312.0
-Drug Safety,Core,1.2,288.0
-Real-World Evidence,Core,1.1,264.0
-Methodology,Primary,1.2,168.0
-Cardiovascular Disease,Primary,1.15,161.0
-Metabolic Disorders,Primary,1.1,154.0
-Diabetes,Primary,1.1,154.0
-Mental Health,Primary,1.05,147.0
-Neuropsychiatry,Primary,1.0,140.0
-SGLT2 inhibitors,Secondary,1.15,92.0
-GLP-1 receptor agonists,Secondary,1.1,88.0
-Marginal structural models,Secondary,1.1,88.0
-Target trial emulation,Secondary,1.1,88.0
-MACE,Secondary,1.05,84.0
-Clone-censor weight,Secondary,1.05,84.0
-Immeasurable time bias,Secondary,1.0,80.0
-DPP-4 inhibitors,Secondary,0.95,76.0
-COVID-19 vaccines,Secondary,0.95,76.0
-Adverse Drug Reactions,Secondary,0.95,76.0
-RWE,Secondary,0.95,76.0
-DOACs,Secondary,0.9,72.0
-Acute Kidney Injury,Secondary,0.9,72.0
-ADHD medications,Secondary,0.85,68.0
-Bleeding,Secondary,0.85,68.0
+SKKU PEPV,Core,1.4,420.0
+Pharmacoepidemiology,Core,1.35,405.0
+Drug Safety,Core,1.25,375.0
+Real-World Evidence,Core,1.15,345.0
+Pharmacovigilance,Core,1.1,330.0
+Methodology,Primary,1.25,187.5
+Cardiovascular Disease,Primary,1.2,180.0
+Metabolic Disorders,Primary,1.15,172.5
+Diabetes,Primary,1.15,172.5
+Mental Health,Primary,1.1,165.0
+Neuropsychiatry,Primary,1.05,157.5
+Infectious Disease,Primary,1.05,157.5
+Oncology,Primary,1.0,150.0
+Respiratory Disease,Primary,0.95,142.5
+Renal Disease,Primary,0.95,142.5
+SGLT2 inhibitors,Secondary,1.2,84.0
+GLP-1 receptor agonists,Secondary,1.15,80.5
+Marginal structural models,Secondary,1.15,80.5
+Target trial emulation,Secondary,1.15,80.5
+MACE,Secondary,1.1,77.0
+Clone-censor weight,Secondary,1.1,77.0
+Propensity score,Secondary,1.1,77.0
+Causal inference,Secondary,1.1,77.0
+Immeasurable time bias,Secondary,1.05,73.5
+Inverse probability weighting,Secondary,1.05,73.5
+DPP-4 inhibitors,Secondary,1.0,70.0
+COVID-19 vaccines,Secondary,1.0,70.0
+Adverse Drug Reactions,Secondary,1.0,70.0
+Mortality,Secondary,1.0,70.0
+RWE,Secondary,1.0,70.0
+Time-varying confounding,Secondary,1.0,70.0
+Immortal time bias,Secondary,1.0,70.0
+Active comparator,Secondary,1.0,70.0
+Electronic health records,Secondary,1.0,70.0
+DOACs,Secondary,0.95,66.5
+Statins,Secondary,0.95,66.5
+Metformin,Secondary,0.95,66.5
+Acute Kidney Injury,Secondary,0.95,66.5
+Heart Failure,Secondary,0.95,66.5
+Myocardial Infarction,Secondary,0.95,66.5
+Instrumental variable,Secondary,0.95,66.5
+Cox regression,Secondary,0.95,66.5
+New-user design,Secondary,0.95,66.5
+Claims data,Secondary,0.95,66.5
+National health insurance,Secondary,0.95,66.5
+Cohort study,Secondary,0.95,66.5
+ADHD medications,Secondary,0.9,63.0
+ACE inhibitors,Secondary,0.9,63.0
+Insulin,Secondary,0.9,63.0
+Antipsychotics,Secondary,0.9,63.0
+Anticoagulants,Secondary,0.9,63.0
+Bleeding,Secondary,0.9,63.0
+Stroke,Secondary,0.9,63.0
+Hospitalization,Secondary,0.9,63.0
+Difference-in-differences,Secondary,0.9,63.0
+Competing risks,Secondary,0.9,63.0
+Self-controlled designs,Secondary,0.9,63.0
+Negative control,Secondary,0.9,63.0
+HIRA,Secondary,0.9,63.0
+NHIS,Secondary,0.9,63.0
+ARBs,Secondary,0.85,59.5
+Beta-blockers,Secondary,0.85,59.5
+Antidepressants,Secondary,0.85,59.5
+NSAIDs,Secondary,0.85,59.5
+Immunosuppressants,Secondary,0.85,59.5
+Biologics,Secondary,0.85,59.5
+Venous Thromboembolism,Secondary,0.85,59.5
+Infection,Secondary,0.85,59.5
+Regression discontinuity,Secondary,0.85,59.5
+Sensitivity analysis,Secondary,0.85,59.5
+Registry data,Secondary,0.85,59.5
+Case-control study,Secondary,0.85,59.5
+Multi-database study,Secondary,0.85,59.5
+Opioids,Secondary,0.8,56.0
+Proton pump inhibitors,Secondary,0.8,56.0
+Fracture,Secondary,0.8,56.0
+Hypoglycemia,Secondary,0.8,56.0
+Arrhythmia,Secondary,0.8,56.0
+Cancer Risk,Secondary,0.8,56.0
+Nested case-control,Secondary,0.8,56.0
+Hepatotoxicity,Secondary,0.75,52.5

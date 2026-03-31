@@ -1,0 +1,32 @@
+﻿term,ring,importance,weight,fontsize
+SKKU PEPV,Center,1.6,352.0,36.0
+Methodology,Ring1,1.25,175.0,19.636369324861448
+"Marginal
+structural models",Ring1,1.25,175.0,19.636369324861448
+"Cardiovascular
+Disease",Ring1,1.2,168.0,19.47254121462168
+"Target trial
+emulation",Ring1,1.2,168.0,19.47254121462168
+"Metabolic Disorders
+/ Diabetes",Ring1,1.15,161.0,19.296819119455627
+"Clone-censor
+weight",Ring1,1.15,161.0,19.296819119455627
+"Mental Health
+/ Neuropsychiatry",Ring1,1.1,154.0,19.107339875790892
+"Immeasurable
+time bias",Ring1,1.1,154.0,19.107339875790892
+SGLT2i,Ring2,1.1,104.50000000000001,17.032122095515195
+GLP-1 RA,Ring2,1.05,99.75,16.694532748023086
+MACE,Ring2,1.0,95.0,16.30213198645145
+DOACs,Ring2,0.95,90.25,15.833605086450966
+"COVID-19
+Vaccines",Ring2,0.95,90.25,15.833605086450966
+"Adverse Drug
+Reactions",Ring2,0.95,90.25,15.833605086450966
+"ADHD
+medications",Ring2,0.9,85.5,15.252129280673614
+"Acute Kidney
+Injury",Ring2,0.9,85.5,15.252129280673614
+Bleeding,Ring2,0.85,80.75,14.485348021568715
+"Real-World
+Evidence (RWE)",Ring3,1.0,70.0,10.0
